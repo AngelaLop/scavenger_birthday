@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="vi    <di    <div class="message" id="msg-5">
+      <strong>August 5:</strong> Happy Early Birthday, Cosita! While I can't be with you today, I wanted you to have something that captures this moment, literally. Use the Polaroid to take photos with your friends and save them for us… I can't wait to see your smile in each one. <br><br>
+      <div class="polaroid">
+        <img src="polaroid_2.png" alt="Us">
+      </div>
+      I have missed you so much the past few months, and I'm counting down the days until we're together again. Enjoy your day, enjoy Bogota and know that I'm celebrating you from today from afar. <br>
+      love you, Cosita!
+
+    </div>ntent="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Cosita</title>
   <style>
     body {
@@ -22,15 +30,6 @@
       margin-bottom: 10px;
       font-size: 2em;
       color: #d17b88;
-    }
-
-    .subtitle {
-      font-size: 1.1em;
-      color: #777;
-      margin-top: -5px;
-      margin-bottom: 20px;
-      text-align: center;
-      max-width: 400px;
     }
 
     .polaroid {
@@ -81,10 +80,10 @@
   </style>
 </head>
 <body>
-  <h1>This is a birthday scavenger hunt for you, Cosita!!</h1>
+  <h1>This is a birthday scavenger hunting for you, Cosita!!</h1>
   <p class="subtitle">
-    We are celebrating you the whole month! <br>
-    Take it like the start of a little adventure that unlocks piece by piece... Just open it on the right day, Cosita :)
+  We are celebrating you the whole month! <br>
+  Take it like the start of a little adventure that unlocks piece by piece... Just.. open it on the right day, Cosita :).
   </p>
   <div class="polaroid">
     <img src="polaroid_photo.png" alt="Us">
@@ -92,34 +91,30 @@
   <div class="countdown" id="countdown"></div>
 
   <div class="messages">
-    <!-- August 5 -->
     <div class="message" id="msg-5">
-      <strong>August 5:</strong> Happy Early Birthday, Cosita! While I can’t be with you today, I wanted you to have something that captures this moment — literally. Use the Polaroid to take photos with your friends and save them for us… I can’t wait to see your smile in each one. <br><br>
+      <strong>August 5:</strong> Happy Early Birthday, Cosita! While I can’t be with you today, I wanted you to have something that captures this moment, literally. Use the Polaroid to take photos with your friends and save them for us… I can’t wait to see your smile in each one. <br>
+        </p>
       <div class="polaroid">
-        <img src="polaroid_2.png" alt="Birthday with friends">
+      <img src="polaroid_2.png" alt="Us">
       </div>
-      I have missed you so much these past few months, and I’m counting down the days until we’re together again. Enjoy your day, enjoy Bogotá and know that I’m celebrating you from afar. <br>
-      Love you, Cosita!
-    </div>
+       I have missed you so much the past few months, and I’m counting down the days until we’re together again. Enjoy your day, enjoy Bogota and know that I’m celebrating you from today from afar. <br>
+       love you, Cosita!
 
-    <!-- August 9 -->
+    </div>
     <div class="message" id="msg-9">
       <strong>August 9:</strong> Happy birthday (Colombia edition)! I wanted to give you something for our upcoming Eurotrip — a little course on art history, so you’ll recognize all the beauty we’re about to see in Paris and Italy. Can’t wait to explore museums and piazzas with you.  
       <br><a href="LINK_TO_COURSE" target="_blank">Access your course here</a>.
     </div>
-
-    <!-- August 20 -->
     <div class="message" id="msg-20">
       <strong>August 20:</strong> Welcome to Paris, Cosita! You made it. I’m so excited to start this adventure with you. Rest up tonight, because tomorrow we celebrate your birthday properly — in true Parisian style.
     </div>
-
-    <!-- August 21 -->
     <div class="message" id="msg-21">
       <strong>August 21:</strong> Get ready, dress up, and meet me for your belated birthday dinner. Tonight we toast to you, to us, and to everything ahead.
     </div>
   </div>
 
   <script>
+    // Unlock dates
     const unlockDates = {
       5: new Date('2025-08-05T09:00:00-05:00'),
       9: new Date('2025-08-09'),
@@ -127,6 +122,7 @@
       21: new Date('2025-08-21')
     };
 
+    // Show messages if unlocked
     function checkMessages() {
       const today = new Date();
       let nextUnlock = null;
@@ -140,6 +136,7 @@
         }
       });
 
+      // Update countdown
       const countdownEl = document.getElementById('countdown');
       if (nextUnlock) {
         const diff = nextUnlock - today;
@@ -152,8 +149,9 @@
       }
     }
 
+    // Run check on load
     checkMessages();
-    setInterval(checkMessages, 60000);
+    setInterval(checkMessages, 60000); // update every minute
   </script>
 </body>
 </html>
