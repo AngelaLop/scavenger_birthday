@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Cosita</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      min-height: 100vh;
+      color: #444;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2em;
+      color: #d17b88;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 10px 10px 30px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      max-width: 300px;
+    }
+
+    .polaroid img {
+      width: 100%;
+      display: block;
+    }
+
+    .countdown {
+      font-size: 1.2em;
+      margin: 15px 0;
+      color: #777;
+    }
+
+    .messages {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .message {
+      border: 2px dashed #d17b88;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+      background: #fff;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .locked {
+      color: #aaa;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <h1>For You, Cosita</h1>
+  <div class="polaroid">
+    <img src="polaroid_photo.png" alt="Us">
+  </div>
+  <div class="countdown" id="countdown"></div>
+
+  <div class="messages">
+    <div class="message" id="msg-5">
+      <strong>August 5:</strong> Happy Birthday, Cosita! While I can’t be with you today, I wanted you to have something that captures this moment — literally. Use the Polaroid to take photos with your friends and save them for us… I can’t wait to see your smile in each one.
+    </div>
+    <div class="message" id="msg-9">
+      <strong>August 9:</strong> Happy birthday (Colombia edition)! I wanted to give you something for our upcoming Eurotrip — a little course on art history, so you’ll recognize all the beauty we’re about to see in Paris and Italy. Can’t wait to explore museums and piazzas with you.  
+      <br><a href="LINK_TO_COURSE" target="_blank">Access your course here</a>.
+    </div>
+    <div class="message" id="msg-20">
+      <strong>August 20:</strong> Welcome to Paris, Cosita! You made it. I’m so excited to start this adventure with you. Rest up tonight, because tomorrow we celebrate your birthday properly — in true Parisian style.
+    </div>
+    <div class="message" id="msg-21">
+      <strong>August 21:</strong> Get ready, dress up, and meet me for your belated birthday dinner. Tonight we toast to you, to us, and to everything ahead.
+    </div>
+  </div>
+
+  <script>
+    // Unlock dates
+    const unlockDates = {
+      5: new Date('2025-08-05'),
+      9: new Date('2025-08-09'),
+      20: new Date('2025-08-20'),
+      21: new Date('2025-08-21')
+    };
+
+    // Show messages if unlocked
+    function checkMessages() {
+      const today = new Date();
+      let nextUnlock = null;
+
+      Object.keys(unlockDates).forEach(day => {
+        const msgEl = document.getElementById(`msg-${day}`);
+        if (today >= unlockDates[day]) {
+          msgEl.classList.add('visible');
+        } else {
+          if (!nextUnlock || unlockDates[day] < nextUnlock) nextUnlock = unlockDates[day];
+        }
+      });
+
+      // Update countdown
+      const countdownEl = document.getElementById('countdown');
+      if (nextUnlock) {
+        const diff = nextUnlock - today;
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff / (1000*60*60)) % 24);
+        const minutes = Math.floor((diff / (1000*60)) % 60);
+        countdownEl.textContent = `Next surprise unlocks in ${days}d ${hours}h ${minutes}m`;
+      } else {
+        countdownEl.textContent = "All surprises unlocked!";
+      }
+    }
+
+    // Run check on load
+    checkMessages();
+    setInterval(checkMessages, 60000); // update every minute
+  </script>
+</body>
+</html>
